@@ -5,17 +5,14 @@ import Button from "../component/Button";
 
 const SignUp = () => {
   const [id, setId] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [passwordConfirm, setPasswordConfirm] = useState<string>('')
 
   const [idMessage, setIdMessage] = useState<string>('')
-  const [emailMessage, setEmailMessage] = useState<string>('')
   const [passwordMessage, setPasswordMessage] = useState<string>('')
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState<string>('')
 
   const [isId, setIsId] = useState<boolean>(false)
-  const [isEmail, setIsEmail] = useState<boolean>(false)
   const [isPassword, setIsPassword] = useState<boolean>(false)
   const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false)
 
@@ -67,7 +64,11 @@ const SignUp = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log()
+    console.log({id, password, passwordConfirm})
+    // TODO 서버에 자료 보내기
+
+    // 성공하면 모달창 띄우기
+    // 이후 담벼락 생성 페이지로 이동
   }
 
   return (
@@ -84,9 +85,9 @@ const SignUp = () => {
         {id.length > 0 && <Message className={`${id ? 'success' : 'error'}`}>{idMessage}</Message>}
       </LabelInput>
       <LabelInput>
-        <label htmlFor="passwd">비밀번호</label>
+        <label htmlFor="password">비밀번호</label>
         <Input
-          name="passwd"
+          name="password"
           minLength={4}
           type="password"
           onChange={onChangePassword}
@@ -95,14 +96,16 @@ const SignUp = () => {
 
       </LabelInput>
       <LabelInput>
-        <label htmlFor="passwd2">비밀번호 확인</label>
+        <label htmlFor="passwordConfirm">비밀번호 확인</label>
         <Input
-          name="passwd2"
+          name="passwordConfirm"
           minLength={4}
           type="password"
           onChange={onChangePasswordConfirm}
           placeHolder='비밀번호를 다시 입력해주세요.'/>
       </LabelInput>
+      {passwordConfirm.length > 0 &&
+        <Message className={`${passwordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Message>}
       <Button
         type="submit"
         disabled={!(isId && isPassword && isPasswordConfirm)}
