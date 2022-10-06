@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import 'sanitize.css';
+// import 'sanitize.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 

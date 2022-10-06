@@ -4,6 +4,7 @@ import Test from "./component/Test";
 import Navigation from "./component/Navigation";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
+import SignUp from "./signup/SignUp";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,8 @@ const AppRouter = () => {
         <Routes>
           <Route path="/main" element={<Test/>}/>
           <Route path="/login" element={<Test/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+
           <Route path="/" element={<Test/>}/>
           <Route path="/member" element={<Member/>}>
             <Route path=":memberId" element={<MemberInfo/>}/>

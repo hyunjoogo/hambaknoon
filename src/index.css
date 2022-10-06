@@ -1,5 +1,22 @@
 :root {
-  --main-bg-black: #202020;
-  --button-font-color : #FFF;
-  --button-bg-color : var(--main-bg-black);
+  /* Color */
+  --main-color-black: #202020;
+  --main-color-gray: #9E9E9E;
+
+  /* Component Setting */
+
+  /* button */
+  --button-font-color: #FFF;
+  --button-bg-color: var(--main-color-black);
+  --button-disabled-bg-color: var(--main-color-gray);
+
+  /*  text input */
+  --input-border-basic-color: var(--main-color-gray);
+  --input-border-error-color: var(--main-color-gray);
+  --input-placeHolder-color: var(--main-color-gray);
+  --input-focus-color: var(--main-color-black);
+}
+
+body {
+
 }

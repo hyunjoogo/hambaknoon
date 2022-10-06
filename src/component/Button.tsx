@@ -43,4 +43,9 @@ const ButtonStyled = styled.button`
   color: var(--button-font-color);
   background-color: var(--button-bg-color);
   padding: 15px 24px 15px 24px;
+  
+  :disabled {
+    background-color: #D9D9D9;
+
+  }
 `;
