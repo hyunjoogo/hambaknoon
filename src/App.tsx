@@ -2,12 +2,15 @@ import React from 'react';
 import {createGlobalStyle} from 'styled-components';
 
 import AppRouter from "./AppRouter";
+import {RecoilRoot} from "recoil";
 
 function App() {
-  return <>
-    <GlobalStyle/>
-    <AppRouter/>
-  </>;
+  return (
+    <RecoilRoot>
+      <GlobalStyle/>
+      <AppRouter/>
+    </RecoilRoot>
+  );
 }
 
 export default App;
@@ -51,6 +54,7 @@ export const GlobalStyle = createGlobalStyle`
     //user-select: none; // 텍스트 셀렉트 안되게
     -webkit-touch-callout: none; // 롱터치 막음
   }
+
   body {
     line-height: 1;
     height: calc(var(--vh, 1vh) * 100);

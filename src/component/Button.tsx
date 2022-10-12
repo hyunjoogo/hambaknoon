@@ -1,6 +1,9 @@
 import React, {ReactNode} from 'react';
 import styled from "styled-components";
 
+type Button = {
+
+}
 
 interface ButtonProps {
   children: ReactNode,

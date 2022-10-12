@@ -71,6 +71,12 @@ const SignUp = () => {
     // 이후 담벼락 생성 페이지로 이동
   }
 
+  const callModal = () => {
+    // 모달을 인스턴스를 만든다.
+    // 내용을 push한다.
+
+  }
+
   return (
     <form onSubmit={onSubmit}>
       <LabelInput>
@@ -110,6 +116,7 @@ const SignUp = () => {
         type="submit"
         disabled={!(isId && isPassword && isPasswordConfirm)}
       >회원가입</Button>
+      <Button onClick={callModal}> 모달 테스트 </Button>
     </form>
   );
 };

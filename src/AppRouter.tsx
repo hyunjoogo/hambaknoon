@@ -5,23 +5,29 @@ import Navigation from "./component/Navigation";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
+import TodoList from "./RecoilTest/TodoList";
+
 
 const AppRouter = () => {
+  // TODO Lazy Loading으로 바꿀 것
   return (
     <>
       <BrowserRouter>
-        <Navigation/>
-        <Routes>
-          <Route path="/main" element={<Test/>}/>
-          <Route path="/login" element={<Test/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+        <>
+          <Navigation/>
+          <Routes>
+            <Route path="/main" element={<TodoList/>}/>
+            {/*<Route path="/modal" element={<ModalTest/>}/>*/}
+            <Route path="/login" element={<Test/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
 
-          <Route path="/" element={<Test/>}/>
-          <Route path="/member" element={<Member/>}>
-            <Route path=":memberId" element={<MemberInfo/>}/>
-          </Route>
-          <Route path="*" element={<Navigate replace to="/login"/>}/>
-        </Routes>
+            <Route path="/" element={<Test/>}/>
+            <Route path="/member" element={<Member/>}>
+              <Route path=":memberId" element={<MemberInfo/>}/>
+            </Route>
+            <Route path="*" element={<Navigate replace to="/login"/>}/>
+          </Routes>
+        </>
       </BrowserRouter>
     </>
   );
