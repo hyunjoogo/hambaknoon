@@ -6,6 +6,7 @@ import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
 import TodoList from "./RecoilTest/TodoList";
+import UseSetRecoilState from "./RecoilTest/UseSetRecoilState";
 
 
 const AppRouter = () => {
@@ -16,7 +17,7 @@ const AppRouter = () => {
         <>
           <Navigation/>
           <Routes>
-            <Route path="/main" element={<TodoList/>}/>
+            <Route path="/main" element={<UseSetRecoilState/>}/>
             {/*<Route path="/modal" element={<ModalTest/>}/>*/}
             <Route path="/login" element={<Test/>}/>
             <Route path="/signup" element={<SignUp/>}/>
