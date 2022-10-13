@@ -1,43 +1,25 @@
-// https://mingule.tistory.com/78
-import React, {ReactNode, useState} from "react";
-import {useRecoilState} from "recoil";
-import {modalState} from "../recoil";
+import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import { modalState } from "../recoil";
 import styled from "styled-components";
-
-
-const ModalProvider = ({children}: { children: ReactNode }) => {
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
-  const [modalContents, setModalContents] = useState(<></>);
-  console.log(setModalContents)
-
-  const closeModal = () => setIsModalOpen(false)
-
-  const onDimmerClick: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    if (event.currentTarget !== event.target) return;
-    closeModal();
-  };
-
-  console.log(children, modalContents, onDimmerClick)
-
-  return (
-    <Dialog className={isModalOpen ? 'openModal modal' : 'modal'} onClick={onDimmerClick}>
-      {
-        isModalOpen
-          ? <section>
-            <main>
-              {children}
-            </main>
-          </section>
-          : null
-      }
-    </Dialog>
-
-  );
+const ModalProvider = ({ children }) => {
+    const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
+    const [modalContents, setModalContents] = useState(React.createElement(React.Fragment, null));
+    console.log(setModalContents);
+    const closeModal = () => setIsModalOpen(false);
+    const onDimmerClick = (event) => {
+        if (event.currentTarget !== event.target)
+            return;
+        closeModal();
+    };
+    console.log(children, modalContents, onDimmerClick);
+    return (React.createElement(Dialog, { className: isModalOpen ? 'openModal modal' : 'modal', onClick: onDimmerClick }, isModalOpen
+        ? React.createElement("section", null,
+            React.createElement("main", null, children))
+        : null));
 };
-
 export default ModalProvider;
-
-const Dialog = styled.div`
+const Dialog = styled.div `
   display: none;
   position: fixed;
   height: 100%;
