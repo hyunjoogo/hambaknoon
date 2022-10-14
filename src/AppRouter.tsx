@@ -7,6 +7,7 @@ import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
 import TodoList from "./RecoilTest/TodoList";
 import ModalTest from "./modal-test/ModalTest";
+import ModalProvider from "./dialog/ModalProvider";
 
 
 const AppRouter = () => {
@@ -14,7 +15,7 @@ const AppRouter = () => {
   return (
     <>
       <BrowserRouter>
-        <>
+        <ModalProvider>
           <Navigation/>
           <Routes>
             <Route path="/main" element={<TodoList/>}/>
@@ -28,7 +29,7 @@ const AppRouter = () => {
             </Route>
             <Route path="*" element={<Navigate replace to="/login"/>}/>
           </Routes>
-        </>
+        </ModalProvider>
       </BrowserRouter>
     </>
   );

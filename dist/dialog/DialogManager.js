@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../recoil";
 import styled from "styled-components";
-const ModalProvider = ({ children }) => {
+const ModalProvider = () => {
     const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
     const [modalContents, setModalContents] = useState(React.createElement(React.Fragment, null));
     console.log(setModalContents);
@@ -12,11 +12,9 @@ const ModalProvider = ({ children }) => {
             return;
         closeModal();
     };
-    console.log(children, modalContents, onDimmerClick);
-    return (React.createElement(Dialog, { className: isModalOpen ? 'openModal modal' : 'modal', onClick: onDimmerClick }, isModalOpen
-        ? React.createElement("section", null,
-            React.createElement("main", null, children))
-        : null));
+    console.log(modalContents, onDimmerClick);
+    return (React.createElement(Dialog, { className: isModalOpen ? 'openModal modal' : 'modal', onClick: onDimmerClick }, isModalOpen && (React.createElement("section", null,
+        React.createElement("main", null, modalContents)))));
 };
 export default ModalProvider;
 const Dialog = styled.div `

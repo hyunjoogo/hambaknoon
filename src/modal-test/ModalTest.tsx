@@ -1,23 +1,17 @@
 import React from 'react';
-import {useRecoilState} from "recoil";
-import {modalState} from "../recoil";
-import ModalProvider from "../dialog/DialogManager";
+import {usePromiseModal} from "../dialog/usePromiseModal";
 import SignUp from "../signup/SignUp";
 
 const ModalTest = () => {
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
-
+  // const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
+  const {showModal} = usePromiseModal();
   const openModal = () => {
-    console.log(isModalOpen)
-    setIsModalOpen(true)
+    showModal(<SignUp/>)
   }
 
   return (
     <div>
       <button onClick={openModal}>모달 오픈</button>
-      {isModalOpen && <ModalProvider>
-        <SignUp/>
-      </ModalProvider>}
     </div>
   );
 };

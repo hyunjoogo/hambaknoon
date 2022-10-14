@@ -7,10 +7,11 @@ import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
 import TodoList from "./RecoilTest/TodoList";
 import ModalTest from "./modal-test/ModalTest";
+import ModalProvider from "./dialog/ModalProvider";
 const AppRouter = () => {
     return (React.createElement(React.Fragment, null,
         React.createElement(BrowserRouter, null,
-            React.createElement(React.Fragment, null,
+            React.createElement(ModalProvider, null,
                 React.createElement(Navigation, null),
                 React.createElement(Routes, null,
                     React.createElement(Route, { path: "/main", element: React.createElement(TodoList, null) }),
