@@ -5,10 +5,14 @@
     /* font */
     font-family: "Pretendard Std Variable", "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     --main-basic-font-size: 16px;
+    /* 12px 0.75rem */
+    /* 14px 0.785rem */
+    /* 18px 1.125rem */
+    /* 24px 1.5rem */
+
     --main-title-font-size: 1.5rem; /* 24px */
     --main-subTitle-font-size: 1.125rem; /* 18px */
     --main-label-font-size: 0.875rem; /* 14px */
-    --main-input-alert-font-size : 0.75rem; /* 12px */
 
     /* Layout */
     --layout-padding-side: 1.25em;
@@ -21,19 +25,26 @@
 
     /* button */
     --button-font-color: #FFF;
+    --button-font-size: var(--main-basic-font-size);
     --button-bg-color: var(--main-color-black);
     --button-disabled-bg-color: #DBD9CA;
 
     /*  text input */
     --input-border-basic-color: #363A3E;
-    --input-error-color: #E03131;
     --input-placeHolder-color: #ADB5BD;
     --input-focus-color: var(--main-color-black);
+    --input-error-color: #E03131;
+    --input-alert-font-size: 0.75rem;
+
+    /* anchor */
+    --anchor-font-size : 1.125rem;
+    --anchor-font-color: black;
 }
 
 
 body {
     font-size: var(--main-basic-font-size);
+    color: black;
 }
 
 /*  140  678*/

@@ -23,17 +23,22 @@ export default ModalTest;
 
 interface Props {
   text: string;
-  onClose? : (result? : string | null) => void;
+  onClose?: (result?: string | null) => void;
 }
 
 const PropsTest: React.FunctionComponent<Props> = (props) => {
   const closeModal = () => {
-    if (props.onClose)
-    props.onClose('닫아!')
-  }
+    if (props.onClose) {
+      props.onClose("닫아!");
+    }
+  };
+
   return (
-    <button onClick={closeModal}>
-      프롭스를 보고 싶습니다.
-    </button>
+    <>
+      {props.text}
+      <button onClick={closeModal}>
+        close버튼
+      </button>
+    </>
   );
 };

@@ -3,6 +3,7 @@ import Input from "../component/Input";
 import styled from "styled-components";
 import Button from "../component/Button";
 import { usePromiseModal } from "../dialog/usePromiseModal";
+import { ButtonWrapper, LabelInput, Layout, TitleBox } from '../styles/commonStyle';
 
 const SignUp = () => {
   const {showModal} = usePromiseModal();
@@ -74,8 +75,6 @@ const SignUp = () => {
     showModal(<>성공했습니다~</>)
 
     // 이후 담벼락 생성 페이지로 이동
-
-
   }
 
   return (
@@ -107,7 +106,6 @@ const SignUp = () => {
             onChange={onChangePassword}
             placeHolder='비밀번호를 입력해주세요.'/>
           {password.length > 0 && <Message className={`${isPassword ? 'success' : 'error'}`}>{passwordMessage}</Message>}
-
         </LabelInput>
         <LabelInput>
           <label htmlFor="passwordConfirm">비밀번호 확인</label>
@@ -134,28 +132,8 @@ const SignUp = () => {
 
 export default SignUp;
 
-const Layout = styled.section`
-  width: 100vw;
-  height: 100vh;
-`;
-const TitleBox = styled.section`
-  height: 30%;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
 
-  .title {
-    font-size: var(--main-title-font-size);
-    font-weight: bold;
-    text-align: center;
-  }
 
-  .subTitle {
-    font-size: var(--main-subTitle-font-size);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-`;
 
 const SignUpForm = styled.form`
   display: grid;
@@ -164,15 +142,6 @@ const SignUpForm = styled.form`
   padding: 0 var(--layout-padding-side);
 `;
 
-const LabelInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-
-  label {
-
-  }
-`;
 
 const Message = styled.span`
   &.success {
@@ -181,11 +150,8 @@ const Message = styled.span`
 
   &.error {
     color: var(--input-error-color);
-    font-size: var(--main-input-alert-font-size);
+    font-size: var(--input-alert-font-size);
   }
 `;
 
-const ButtonWrapper = styled.div`
-  margin-top: 1rem;
-  
-`;
+

@@ -14,6 +14,7 @@ const ButtonStyled = styled.button `
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: var(--button-font-size);
 
   :disabled {
     background-color: var(--button-disabled-bg-color);

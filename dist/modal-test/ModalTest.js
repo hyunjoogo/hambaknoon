@@ -13,8 +13,11 @@ const ModalTest = () => {
 export default ModalTest;
 const PropsTest = (props) => {
     const closeModal = () => {
-        if (props.onClose)
-            props.onClose('닫아!');
+        if (props.onClose) {
+            props.onClose("닫아!");
+        }
     };
-    return (React.createElement("button", { onClick: closeModal }, "\uD504\uB86D\uC2A4\uB97C \uBCF4\uACE0 \uC2F6\uC2B5\uB2C8\uB2E4."));
+    return (React.createElement(React.Fragment, null,
+        props.text,
+        React.createElement("button", { onClick: closeModal }, "close\uBC84\uD2BC")));
 };

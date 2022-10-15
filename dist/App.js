@@ -74,5 +74,10 @@ export const GlobalStyle = createGlobalStyle `
   
   button {
     border: none;
+    cursor: pointer;
+  }
+
+  a:visited {
+    color: inherit;
   }
 `;

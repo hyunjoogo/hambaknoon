@@ -14,8 +14,17 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContents, setModalContents] = useState<ReactNode>(<></>);
 
-  const openModal = (dialog: any) => {
+  // useEffect(() => {
+  //   const close = (e: KeyboardEvent) => {
+  //     if (e.keyCode === 27) {
+  //       closeModal();
+  //     }
+  //   };
+  //   window.addEventListener("keydown", close);
+  //   return () => window.removeEventListener("keydown", close);
+  // }, []);
 
+  const openModal = (dialog: any) => {
     // @ts-ignore
     const child = React.cloneElement(dialog, {
         onClose: (result: any) => {
@@ -28,7 +37,6 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
     );
     setIsModalOpen(true);
     setModalContents(child);
-
   };
 
   const closeModal = () => {
@@ -51,7 +59,9 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
     }}>
       {children}
       {isModalOpen && (
-        <Dialog className={isModalOpen ? "openModal modal" : "modal"} onClick={cancelModal}>
+        <Dialog
+          className={isModalOpen ? "openModal modal" : "modal"}
+          onClick={cancelModal}>
           <section>
             <main>
               {modalContents}
