@@ -1,40 +1,57 @@
 // https://mingule.tistory.com/78
-import React, {ReactNode, useState} from "react";
+import React, { ReactNode, useState } from "react";
 import styled from "styled-components";
-
 
 export interface RenderPropsContext {
   isModalOpen: boolean;
-  openModal: (children: ReactNode) => void;
+  openModal: (dialog: any) => void;
   closeModal: () => void;
 }
 
 const ModalContext = React.createContext<RenderPropsContext | null>(null);
 
-const ModalProvider = ({children}: { children: ReactNode }) => {
+const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContents, setModalContents] = useState<ReactNode>(<></>);
 
-  const openModal = (children: ReactNode) => {
+  const openModal = (dialog: any) => {
+
+    // @ts-ignore
+    const child = React.cloneElement(dialog, {
+        onClose: (result: any) => {
+          if (dialog.props.onClose) {
+            dialog.props.onClose(result);
+            closeModal();
+          }
+        }
+      }
+    );
     setIsModalOpen(true);
-    setModalContents(children);
+    setModalContents(child);
+
   };
 
-  const closeModal = () => setIsModalOpen(false);
-
-  const onDimmerClick: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    if (event.currentTarget !== event.target) return;
-    const openModal = document.querySelector('.openModal')
+  const closeModal = () => {
+    const openModal = document.querySelector(".openModal");
     openModal?.classList.add("closeModal");
     //TODO clearTime 하는 방법 생각해야함
-    setTimeout(() => closeModal(), 300);
+    setTimeout(() => setIsModalOpen(false), 300);
+  };
+
+  const cancelModal: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    if (event.currentTarget !== event.target) return;
+    closeModal();
   };
 
   return (
-    <ModalContext.Provider value={{isModalOpen, openModal, closeModal}}>
+    <ModalContext.Provider value={{
+      isModalOpen,
+      openModal,
+      closeModal
+    }}>
       {children}
       {isModalOpen && (
-        <Dialog className={isModalOpen ? 'openModal modal' : 'modal'} onClick={onDimmerClick}>
+        <Dialog className={isModalOpen ? "openModal modal" : "modal"} onClick={cancelModal}>
           <section>
             <main>
               {modalContents}
@@ -50,7 +67,7 @@ export default ModalProvider;
 
 export {
   ModalContext, ModalProvider
-}
+};
 
 const Dialog = styled.div`
   display: none;

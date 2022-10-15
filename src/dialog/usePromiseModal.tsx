@@ -1,6 +1,7 @@
 import {ReactNode, useContext, useRef} from "react";
 import {ModalContext} from "./ModalProvider";
 
+
 export const usePromiseModal = () => {
   const modal = useContext(ModalContext);
   const resolveRef = useRef<(value?: unknown) => void>(() => {

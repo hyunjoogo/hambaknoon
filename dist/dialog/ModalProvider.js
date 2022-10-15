@@ -4,21 +4,35 @@ const ModalContext = React.createContext(null);
 const ModalProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContents, setModalContents] = useState(React.createElement(React.Fragment, null));
-    const openModal = (children) => {
+    const openModal = (dialog) => {
+        const child = React.cloneElement(dialog, {
+            onClose: (result) => {
+                if (dialog.props.onClose) {
+                    dialog.props.onClose(result);
+                    closeModal();
+                }
+            }
+        });
         setIsModalOpen(true);
-        setModalContents(children);
+        setModalContents(child);
     };
-    const closeModal = () => setIsModalOpen(false);
-    const onDimmerClick = (event) => {
+    const closeModal = () => {
+        const openModal = document.querySelector(".openModal");
+        openModal === null || openModal === void 0 ? void 0 : openModal.classList.add("closeModal");
+        setTimeout(() => setIsModalOpen(false), 300);
+    };
+    const cancelModal = (event) => {
         if (event.currentTarget !== event.target)
             return;
-        const openModal = document.querySelector('.openModal');
-        openModal === null || openModal === void 0 ? void 0 : openModal.classList.add("closeModal");
-        setTimeout(() => closeModal(), 300);
+        closeModal();
     };
-    return (React.createElement(ModalContext.Provider, { value: { isModalOpen, openModal, closeModal } },
+    return (React.createElement(ModalContext.Provider, { value: {
+            isModalOpen,
+            openModal,
+            closeModal
+        } },
         children,
-        isModalOpen && (React.createElement(Dialog, { className: isModalOpen ? 'openModal modal' : 'modal', onClick: onDimmerClick },
+        isModalOpen && (React.createElement(Dialog, { className: isModalOpen ? "openModal modal" : "modal", onClick: cancelModal },
             React.createElement("section", null,
                 React.createElement("main", null, modalContents))))));
 };

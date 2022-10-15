@@ -2,7 +2,9 @@ import React, { useCallback, useState } from 'react';
 import Input from "../component/Input";
 import styled from "styled-components";
 import Button from "../component/Button";
+import { usePromiseModal } from "../dialog/usePromiseModal";
 const SignUp = () => {
+    const { showModal } = usePromiseModal();
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -53,6 +55,7 @@ const SignUp = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log({ id, password, passwordConfirm });
+        showModal(React.createElement(React.Fragment, null, "\uC131\uACF5\uD588\uC2B5\uB2C8\uB2E4~"));
     };
     return (React.createElement(Layout, null,
         React.createElement(TitleBox, null,

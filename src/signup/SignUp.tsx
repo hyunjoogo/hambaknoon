@@ -2,8 +2,11 @@ import React, {useCallback, useState} from 'react';
 import Input from "../component/Input";
 import styled from "styled-components";
 import Button from "../component/Button";
+import { usePromiseModal } from "../dialog/usePromiseModal";
 
 const SignUp = () => {
+  const {showModal} = usePromiseModal();
+
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
@@ -68,7 +71,11 @@ const SignUp = () => {
     // TODO 서버에 자료 보내기
 
     // 성공하면 모달창 띄우기
+    showModal(<>성공했습니다~</>)
+
     // 이후 담벼락 생성 페이지로 이동
+
+
   }
 
   return (
