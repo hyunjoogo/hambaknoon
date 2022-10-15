@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Test from "./component/Test";
-import Navigation from "./component/Navigation";
+// import Navigation from "./component/Navigation";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
@@ -16,7 +16,7 @@ const AppRouter = () => {
     <>
       <BrowserRouter>
         <ModalProvider>
-          <Navigation/>
+          {/*<Navigation/>*/}
           <Routes>
             <Route path="/main" element={<TodoList/>}/>
             {/*<Route path="/modal" element={<ModalTest/>}/>*/}

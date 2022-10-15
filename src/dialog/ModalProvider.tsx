@@ -20,7 +20,6 @@ const ModalProvider = ({children}: { children: ReactNode }) => {
     setModalContents(children);
   };
 
-
   const closeModal = () => setIsModalOpen(false);
 
   const onDimmerClick: React.MouseEventHandler<HTMLDivElement> = (event) => {

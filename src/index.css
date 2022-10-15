@@ -1,24 +1,40 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-std.css");
+
+
 :root {
-  /* Color */
-  --main-color-black: #202020;
-  --main-color-gray: #9E9E9E;
+    /* font */
+    font-family: "Pretendard Std Variable", "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    --main-basic-font-size: 16px;
+    --main-title-font-size: 1.5rem; /* 24px */
+    --main-subTitle-font-size: 1.125rem; /* 18px */
+    --main-label-font-size: 0.875rem; /* 14px */
+    --main-input-alert-font-size : 0.75rem; /* 12px */
 
-  /* Component Setting */
+    /* Layout */
+    --layout-padding-side: 1.25em;
 
-  /* button */
-  --button-font-color: #FFF;
-  --button-bg-color: var(--main-color-black);
-  --button-disabled-bg-color: var(--main-color-gray);
+    /* Color */
+    --main-color-black: #202020;
+    --main-color-gray: #9E9E9E;
 
-  /*  text input */
-  --input-border-basic-color: var(--main-color-gray);
-  --input-border-error-color: var(--main-color-gray);
-  --input-placeHolder-color: var(--main-color-gray);
-  --input-focus-color: var(--main-color-black);
+    /* Component Setting */
+
+    /* button */
+    --button-font-color: #FFF;
+    --button-bg-color: var(--main-color-black);
+    --button-disabled-bg-color: #DBD9CA;
+
+    /*  text input */
+    --input-border-basic-color: #363A3E;
+    --input-error-color: #E03131;
+    --input-placeHolder-color: #ADB5BD;
+    --input-focus-color: var(--main-color-black);
 }
+
 
 body {
-
+    font-size: var(--main-basic-font-size);
 }
 
+/*  140  678*/
 

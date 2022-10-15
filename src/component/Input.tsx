@@ -1,33 +1,34 @@
 import React, {ChangeEventHandler} from 'react';
 import styled from "styled-components";
 
+
 interface InputProps {
-  name?:string
-  className?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  value?: string | string[] | number
-  disabled?: boolean
-  placeHolder?: string
-  isError?: boolean
-  type? :string
-  minLength? : number
-  maxLength? : number
+  name?: string;
+  className?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value?: string | string[] | number;
+  disabled?: boolean;
+  placeHolder?: string;
+  isCorrect?: boolean | null;
+  type?: string;
+  minLength?: number;
+  maxLength?: number;
 }
 
 
-const Input: React.FC<InputProps> = (
+const Input = (
   {
     className,
     onChange,
     value,
     disabled,
     placeHolder,
-    isError,
+    isCorrect,
     name,
     type,
     minLength,
     maxLength
-  }) => {
+  }: InputProps) => {
   return (
     <InputStyled
       minLength={minLength}
@@ -38,7 +39,7 @@ const Input: React.FC<InputProps> = (
       value={value}
       disabled={disabled}
       placeholder={placeHolder}
-      isError={isError}
+      isCorrect={isCorrect}
       name={name}
     />
   );
@@ -52,20 +53,33 @@ const InputStyled = styled.input<InputProps>`
   border-radius: 0.5rem;
   font-size: 18px;
 
-  border: 1px solid ${(props) => props.isError
-          ? 'var(--input-border-error-color)'
-          : 'var(--input-border-basic-color)'
-  };
 
+  border: 1px solid ${({isCorrect}) => {
+    if (isCorrect === null || isCorrect === undefined) {
+      return 'var(--input-border-basic-color)'
+    } else if (!isCorrect) {
+      console.log(isCorrect)
+      return 'var(--input-error-color)'
+    } else {
+      return 'var(--input-border-basic-color)'
+    }
+  }};
+
+  
   ::placeholder {
     color: var(--input-placeHolder-color);
     font-weight: bold;
   }
 
   :focus-visible {
-    outline-color: ${(props) => props.isError
-            ? 'inherit'
-            : 'var(--input-focus-color)'
-    };
+    outline-color: ${({isCorrect}) => {
+      if (isCorrect === null || isCorrect === undefined) {
+        return 'var(--input-border-basic-color)'
+      } else if (!isCorrect) {
+        return 'var(--input-error-color)'
+      } else {
+        return 'var(--input-border-basic-color)'
+      }
+    }
   }
 `;

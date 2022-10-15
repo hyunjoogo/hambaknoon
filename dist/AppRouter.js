@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Test from "./component/Test";
-import Navigation from "./component/Navigation";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
@@ -12,7 +11,6 @@ const AppRouter = () => {
     return (React.createElement(React.Fragment, null,
         React.createElement(BrowserRouter, null,
             React.createElement(ModalProvider, null,
-                React.createElement(Navigation, null),
                 React.createElement(Routes, null,
                     React.createElement(Route, { path: "/main", element: React.createElement(TodoList, null) }),
                     React.createElement(Route, { path: "/login", element: React.createElement(ModalTest, null) }),

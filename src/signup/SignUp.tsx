@@ -4,17 +4,17 @@ import styled from "styled-components";
 import Button from "../component/Button";
 
 const SignUp = () => {
-  const [id, setId] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [passwordConfirm, setPasswordConfirm] = useState<string>('')
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
 
-  const [idMessage, setIdMessage] = useState<string>('')
-  const [passwordMessage, setPasswordMessage] = useState<string>('')
-  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState<string>('')
+  const [idMessage, setIdMessage] = useState('')
+  const [passwordMessage, setPasswordMessage] = useState('')
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('')
 
-  const [isId, setIsId] = useState<boolean>(false)
-  const [isPassword, setIsPassword] = useState<boolean>(false)
-  const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean>(false)
+  const [isId, setIsId] = useState<boolean | null>(null);
+  const [isPassword, setIsPassword] = useState<boolean | null>(null)
+  const [isPasswordConfirm, setIsPasswordConfirm] = useState<boolean | null>(null)
 
 
   const onChangeId = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,57 +71,91 @@ const SignUp = () => {
     // 이후 담벼락 생성 페이지로 이동
   }
 
-  const callModal = () => {
-    // 모달을 인스턴스를 만든다.
-    // 내용을 push한다.
-
-  }
-
   return (
-    <form onSubmit={onSubmit}>
-      <LabelInput>
-        <label htmlFor="id">아이디(영어 10자)</label>
-        <Input
-          name="id"
-          minLength={4}
-          maxLength={10}
-          type="text"
-          onChange={onChangeId}
-          placeHolder='아이디를 입력해주세요.'/>
-        {id.length > 0 && <Message className={`${id ? 'success' : 'error'}`}>{idMessage}</Message>}
-      </LabelInput>
-      <LabelInput>
-        <label htmlFor="password">비밀번호</label>
-        <Input
-          name="password"
-          minLength={4}
-          type="password"
-          onChange={onChangePassword}
-          placeHolder='비밀번호를 입력해주세요.'/>
-        {password.length > 0 && <Message className={`${password ? 'success' : 'error'}`}>{passwordMessage}</Message>}
+    <Layout>
+      <TitleBox>
+        <h1 className="title">회원가입</h1>
+        <h2 className="subTitle">담벼락 만들기</h2>
+      </TitleBox>
+      <SignUpForm onSubmit={onSubmit}>
+        <LabelInput>
+          <label htmlFor="id">아이디(영어 10자 이하)</label>
+          <Input
+            name="id"
+            minLength={4}
+            maxLength={10}
+            type="text"
+            isCorrect={isId}
+            onChange={onChangeId}
+            placeHolder='아이디를 입력해주세요.'/>
+          {id.length > 0 && <Message className={`${isId ? 'success' : 'error'}`}>{idMessage}</Message>}
+        </LabelInput>
+        <LabelInput>
+          <label htmlFor="password">비밀번호</label>
+          <Input
+            name="password"
+            minLength={4}
+            type="password"
+            isCorrect={isPassword}
+            onChange={onChangePassword}
+            placeHolder='비밀번호를 입력해주세요.'/>
+          {password.length > 0 && <Message className={`${isPassword ? 'success' : 'error'}`}>{passwordMessage}</Message>}
 
-      </LabelInput>
-      <LabelInput>
-        <label htmlFor="passwordConfirm">비밀번호 확인</label>
-        <Input
-          name="passwordConfirm"
-          minLength={4}
-          type="password"
-          onChange={onChangePasswordConfirm}
-          placeHolder='비밀번호를 다시 입력해주세요.'/>
-      </LabelInput>
-      {passwordConfirm.length > 0 &&
-        <Message className={`${passwordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Message>}
-      <Button
-        type="submit"
-        disabled={!(isId && isPassword && isPasswordConfirm)}
-      >회원가입</Button>
-      <Button onClick={callModal}> 모달 테스트 </Button>
-    </form>
+        </LabelInput>
+        <LabelInput>
+          <label htmlFor="passwordConfirm">비밀번호 확인</label>
+          <Input
+            name="passwordConfirm"
+            minLength={4}
+            type="password"
+            isCorrect={isPasswordConfirm}
+            onChange={onChangePasswordConfirm}
+            placeHolder='비밀번호를 다시 입력해주세요.'/>
+        </LabelInput>
+        {passwordConfirm.length > 0 &&
+          <Message className={`${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Message>}
+        <ButtonWrapper>
+          <Button
+            type="submit"
+            disabled={!(isId && isPassword && isPasswordConfirm)}
+          >회원가입</Button>
+        </ButtonWrapper>
+      </SignUpForm>
+    </Layout>
   );
 };
 
 export default SignUp;
+
+const Layout = styled.section`
+  width: 100vw;
+  height: 100vh;
+`;
+const TitleBox = styled.section`
+  height: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+
+  .title {
+    font-size: var(--main-title-font-size);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .subTitle {
+    font-size: var(--main-subTitle-font-size);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+`;
+
+const SignUpForm = styled.form`
+  display: grid;
+  grid-template-columns: repeat(1, 3fr);
+  gap: 1rem;
+  padding: 0 var(--layout-padding-side);
+`;
 
 const LabelInput = styled.div`
   display: flex;
@@ -134,11 +168,17 @@ const LabelInput = styled.div`
 `;
 
 const Message = styled.span`
-  .success {
+  &.success {
     color: #8f8c8b;
   }
 
-  .error {
-    color: #ff2727;
+  &.error {
+    color: var(--input-error-color);
+    font-size: var(--main-input-alert-font-size);
   }
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 1rem;
+  
 `;

@@ -3,7 +3,6 @@ import {usePromiseModal} from "../dialog/usePromiseModal";
 import SignUp from "../signup/SignUp";
 
 const ModalTest = () => {
-  // const [isModalOpen, setIsModalOpen] = useRecoilState(modalState);
   const {showModal} = usePromiseModal();
   const openModal = () => {
     showModal(<SignUp/>)

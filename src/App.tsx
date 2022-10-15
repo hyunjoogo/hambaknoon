@@ -58,7 +58,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     height: calc(var(--vh, 1vh) * 100);
-    background-color: lightgray;
   }
 
   ol, ul {
@@ -78,5 +77,9 @@ export const GlobalStyle = createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  
+  button {
+    border: none;
   }
 `;

@@ -9,9 +9,9 @@ const SignUp = () => {
     const [idMessage, setIdMessage] = useState('');
     const [passwordMessage, setPasswordMessage] = useState('');
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-    const [isId, setIsId] = useState(false);
-    const [isPassword, setIsPassword] = useState(false);
-    const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
+    const [isId, setIsId] = useState(null);
+    const [isPassword, setIsPassword] = useState(null);
+    const [isPasswordConfirm, setIsPasswordConfirm] = useState(null);
     const onChangeId = useCallback((e) => {
         const idRegex = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
         const idCurrent = e.target.value;
@@ -54,26 +54,56 @@ const SignUp = () => {
         e.preventDefault();
         console.log({ id, password, passwordConfirm });
     };
-    const callModal = () => {
-    };
-    return (React.createElement("form", { onSubmit: onSubmit },
-        React.createElement(LabelInput, null,
-            React.createElement("label", { htmlFor: "id" }, "\uC544\uC774\uB514(\uC601\uC5B4 10\uC790)"),
-            React.createElement(Input, { name: "id", minLength: 4, maxLength: 10, type: "text", onChange: onChangeId, placeHolder: '\uC544\uC774\uB514\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.' }),
-            id.length > 0 && React.createElement(Message, { className: `${id ? 'success' : 'error'}` }, idMessage)),
-        React.createElement(LabelInput, null,
-            React.createElement("label", { htmlFor: "password" }, "\uBE44\uBC00\uBC88\uD638"),
-            React.createElement(Input, { name: "password", minLength: 4, type: "password", onChange: onChangePassword, placeHolder: '\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.' }),
-            password.length > 0 && React.createElement(Message, { className: `${password ? 'success' : 'error'}` }, passwordMessage)),
-        React.createElement(LabelInput, null,
-            React.createElement("label", { htmlFor: "passwordConfirm" }, "\uBE44\uBC00\uBC88\uD638 \uD655\uC778"),
-            React.createElement(Input, { name: "passwordConfirm", minLength: 4, type: "password", onChange: onChangePasswordConfirm, placeHolder: '\uBE44\uBC00\uBC88\uD638\uB97C \uB2E4\uC2DC \uC785\uB825\uD574\uC8FC\uC138\uC694.' })),
-        passwordConfirm.length > 0 &&
-            React.createElement(Message, { className: `${passwordConfirm ? 'success' : 'error'}` }, passwordConfirmMessage),
-        React.createElement(Button, { type: "submit", disabled: !(isId && isPassword && isPasswordConfirm) }, "\uD68C\uC6D0\uAC00\uC785"),
-        React.createElement(Button, { onClick: callModal }, " \uBAA8\uB2EC \uD14C\uC2A4\uD2B8 ")));
+    return (React.createElement(Layout, null,
+        React.createElement(TitleBox, null,
+            React.createElement("h1", { className: "title" }, "\uD68C\uC6D0\uAC00\uC785"),
+            React.createElement("h2", { className: "subTitle" }, "\uB2F4\uBCBC\uB77D \uB9CC\uB4E4\uAE30")),
+        React.createElement(SignUpForm, { onSubmit: onSubmit },
+            React.createElement(LabelInput, null,
+                React.createElement("label", { htmlFor: "id" }, "\uC544\uC774\uB514(\uC601\uC5B4 10\uC790 \uC774\uD558)"),
+                React.createElement(Input, { name: "id", minLength: 4, maxLength: 10, type: "text", isCorrect: isId, onChange: onChangeId, placeHolder: '\uC544\uC774\uB514\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.' }),
+                id.length > 0 && React.createElement(Message, { className: `${isId ? 'success' : 'error'}` }, idMessage)),
+            React.createElement(LabelInput, null,
+                React.createElement("label", { htmlFor: "password" }, "\uBE44\uBC00\uBC88\uD638"),
+                React.createElement(Input, { name: "password", minLength: 4, type: "password", isCorrect: isPassword, onChange: onChangePassword, placeHolder: '\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.' }),
+                password.length > 0 && React.createElement(Message, { className: `${isPassword ? 'success' : 'error'}` }, passwordMessage)),
+            React.createElement(LabelInput, null,
+                React.createElement("label", { htmlFor: "passwordConfirm" }, "\uBE44\uBC00\uBC88\uD638 \uD655\uC778"),
+                React.createElement(Input, { name: "passwordConfirm", minLength: 4, type: "password", isCorrect: isPasswordConfirm, onChange: onChangePasswordConfirm, placeHolder: '\uBE44\uBC00\uBC88\uD638\uB97C \uB2E4\uC2DC \uC785\uB825\uD574\uC8FC\uC138\uC694.' })),
+            passwordConfirm.length > 0 &&
+                React.createElement(Message, { className: `${isPasswordConfirm ? 'success' : 'error'}` }, passwordConfirmMessage),
+            React.createElement(ButtonWrapper, null,
+                React.createElement(Button, { type: "submit", disabled: !(isId && isPassword && isPasswordConfirm) }, "\uD68C\uC6D0\uAC00\uC785")))));
 };
 export default SignUp;
+const Layout = styled.section `
+  width: 100vw;
+  height: 100vh;
+`;
+const TitleBox = styled.section `
+  height: 30%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+
+  .title {
+    font-size: var(--main-title-font-size);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .subTitle {
+    font-size: var(--main-subTitle-font-size);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+`;
+const SignUpForm = styled.form `
+  display: grid;
+  grid-template-columns: repeat(1, 3fr);
+  gap: 1rem;
+  padding: 0 var(--layout-padding-side);
+`;
 const LabelInput = styled.div `
   display: flex;
   flex-direction: column;
@@ -84,11 +114,16 @@ const LabelInput = styled.div `
   }
 `;
 const Message = styled.span `
-  .success {
+  &.success {
     color: #8f8c8b;
   }
 
-  .error {
-    color: #ff2727;
+  &.error {
+    color: var(--input-error-color);
+    font-size: var(--main-input-alert-font-size);
   }
+`;
+const ButtonWrapper = styled.div `
+  margin-top: 1rem;
+  
 `;

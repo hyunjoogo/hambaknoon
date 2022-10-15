@@ -1,9 +1,7 @@
 import React, {ReactNode} from 'react';
 import styled from "styled-components";
 
-type Button = {
-
-}
+type Button = {}
 
 interface ButtonProps {
   children: ReactNode,
@@ -38,17 +36,18 @@ const Button: React.FC<ButtonProps> = (
 export default Button;
 
 const ButtonStyled = styled.button`
-  height: 53px;
-  width: 320px;
-  left: 20px;
-  top: 206px;
+  width: 100%;
+  height: 3.25rem;
   border-radius: 0.5rem;
   color: var(--button-font-color);
   background-color: var(--button-bg-color);
-  padding: 15px 24px 15px 24px;
-  
-  :disabled {
-    background-color: #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  :disabled {
+    background-color: var(--button-disabled-bg-color);
   }
+  
+  
 `;
