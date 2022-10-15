@@ -1,24 +1,18 @@
-import React, {ReactNode} from 'react';
+import React from "react";
 import styled from "styled-components";
 
-type Button = {}
-
-interface ButtonProps {
-  children: ReactNode,
-  className?: string,
-  disabled?: boolean,
-  onClick?: () => void,
-  type?: 'button' | 'submit' | 'reset',
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+  // 내가 custom으로 만들고 싶은 건 여기에
 }
 
-const Button: React.FC<ButtonProps> = (
+const Button = (
   {
     children,
     className,
     disabled,
     onClick,
     type,
-  }) => {
+  }: ButtonProps) => {
   return (
     <>
       <ButtonStyled

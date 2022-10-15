@@ -1,20 +1,10 @@
-import React, {ChangeEventHandler} from 'react';
+import React from "react";
 import styled from "styled-components";
 
-
-interface InputProps {
-  name?: string;
-  className?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  value?: string | string[] | number;
-  disabled?: boolean;
-  placeHolder?: string;
-  isCorrect?: boolean | null;
-  type?: string;
-  minLength?: number;
-  maxLength?: number;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
+  // 내가 custom으로 만들고 싶은 건 여기에
+  isCorrect?: boolean | null; // null일때는 초기값
 }
-
 
 const Input = (
   {
@@ -22,7 +12,7 @@ const Input = (
     onChange,
     value,
     disabled,
-    placeHolder,
+    placeholder,
     isCorrect,
     name,
     type,
@@ -38,7 +28,7 @@ const Input = (
       onChange={onChange}
       value={value}
       disabled={disabled}
-      placeholder={placeHolder}
+      placeholder={placeholder}
       isCorrect={isCorrect}
       name={name}
     />
@@ -67,7 +57,7 @@ const InputStyled = styled.input<InputProps>`
 
   
   ::placeholder {
-    color: var(--input-placeHolder-color);
+    color: var(--input-placeholder-color);
     font-weight: bold;
   }
 

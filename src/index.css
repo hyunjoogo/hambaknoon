@@ -22,6 +22,8 @@
     --main-color-gray: #9E9E9E;
 
     /* Component Setting */
+    /* Rule */
+    /* 해당 컴포넌트의 색상 및 폰트 관련한 것을 아래에 적는다. */
 
     /* button */
     --button-font-color: #FFF;
@@ -31,7 +33,7 @@
 
     /*  text input */
     --input-border-basic-color: #363A3E;
-    --input-placeHolder-color: #ADB5BD;
+    --input-placeholder-color: #ADB5BD;
     --input-focus-color: var(--main-color-black);
     --input-error-color: #E03131;
     --input-alert-font-size: 0.75rem;
@@ -41,11 +43,9 @@
     --anchor-font-color: black;
 }
 
-
 body {
     font-size: var(--main-basic-font-size);
     color: black;
 }
 
-/*  140  678*/
 

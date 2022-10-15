@@ -93,7 +93,7 @@ const SignUp = () => {
             type="text"
             isCorrect={isId}
             onChange={onChangeId}
-            placeHolder='아이디를 입력해주세요.'/>
+            placeholder='아이디를 입력해주세요.'/>
           {id.length > 0 && <Message className={`${isId ? 'success' : 'error'}`}>{idMessage}</Message>}
         </LabelInput>
         <LabelInput>
@@ -104,7 +104,7 @@ const SignUp = () => {
             type="password"
             isCorrect={isPassword}
             onChange={onChangePassword}
-            placeHolder='비밀번호를 입력해주세요.'/>
+            placeholder='비밀번호를 입력해주세요.'/>
           {password.length > 0 && <Message className={`${isPassword ? 'success' : 'error'}`}>{passwordMessage}</Message>}
         </LabelInput>
         <LabelInput>
@@ -115,7 +115,7 @@ const SignUp = () => {
             type="password"
             isCorrect={isPasswordConfirm}
             onChange={onChangePasswordConfirm}
-            placeHolder='비밀번호를 다시 입력해주세요.'/>
+            placeholder='비밀번호를 다시 입력해주세요.'/>
         </LabelInput>
         {passwordConfirm.length > 0 &&
           <Message className={`${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Message>}

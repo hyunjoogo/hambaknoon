@@ -5,6 +5,7 @@ import { ButtonWrapper, LabelInput, Layout, TitleBox } from "../styles/commonSty
 import Input from "../component/Input";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import AlertModal from "../component/AlertModal";
 
 const Login = () => {
   const { showModal } = usePromiseModal();
@@ -27,15 +28,33 @@ const Login = () => {
       password
     });
     if (id === "" || password === "") {
-      console.log(id, password);
+      showModal(
+        <AlertModal
+          content="아이디 또는 비밀번호를 입력해야합니다"
+          onClose={() => {
+          }}
+        />
+      );
+      return console.log("빈값", id, password);
+    }
+    // TODO 로딩걸기
+    try {
+      // TODO 서버에 자료 보내기
+      // 성공하면 어디로 가야하나요?
+      // 1. 나의 담벼락으로 이동
+      // 거기서 담벼락이 없으면 담벼락 만들기로 이동
+
+      if (id === "asdf" && password === "asdf") {
+        showModal(<>로그인 합니다!</>);
+      } else {
+        throw new Error("서버에러!");
+      }
+    } catch (e: any) {
+      showModal(<>{e.message}</>);
+    } finally {
+      // TODO 로딩 close
     }
 
-    // TODO 서버에 자료 보내기
-
-    // 성공하면 모달창 띄우기
-    showModal(<>로그인 합니다!</>);
-
-    // 이후 담벼락 생성 페이지로 이동
   };
 
   return (
@@ -49,20 +68,20 @@ const Login = () => {
           <label htmlFor="id">아이디(영어 10자 이하)</label>
           <Input
             name="id"
-            minLength={4}
-            maxLength={10}
+            // minLength={4}
+            // maxLength={10}
             type="text"
             onChange={onChangeId}
-            placeHolder="아이디를 입력해주세요."/>
+            placeholder="아이디를 입력해주세요."/>
         </LabelInput>
         <LabelInput>
           <label htmlFor="password">비밀번호</label>
           <Input
             name="password"
-            minLength={4}
+            // minLength={4}
             type="password"
             onChange={onChangePassword}
-            placeHolder="비밀번호를 입력해주세요."/>
+            placeholder="비밀번호를 입력해주세요."/>
         </LabelInput>
         <ButtonWrapper>
           <Button
@@ -89,6 +108,7 @@ const LoginForm = styled.form`
 const LinkWrapper = styled.div`
   margin-top: 2rem;
   text-align: center;
+
   a {
     font-size: var(--anchor-font-size);
     color: var(--anchor-font-size);

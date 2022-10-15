@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-const Input = ({ className, onChange, value, disabled, placeHolder, isCorrect, name, type, minLength, maxLength }) => {
-    return (React.createElement(InputStyled, { minLength: minLength, maxLength: maxLength, type: type, className: className, onChange: onChange, value: value, disabled: disabled, placeholder: placeHolder, isCorrect: isCorrect, name: name }));
+const Input = ({ className, onChange, value, disabled, placeholder, isCorrect, name, type, minLength, maxLength }) => {
+    return (React.createElement(InputStyled, { minLength: minLength, maxLength: maxLength, type: type, className: className, onChange: onChange, value: value, disabled: disabled, placeholder: placeholder, isCorrect: isCorrect, name: name }));
 };
 export default Input;
 const InputStyled = styled.input `
@@ -26,7 +26,7 @@ const InputStyled = styled.input `
 
   
   ::placeholder {
-    color: var(--input-placeHolder-color);
+    color: var(--input-placeholder-color);
     font-weight: bold;
   }
 

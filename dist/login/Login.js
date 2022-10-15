@@ -5,6 +5,7 @@ import { ButtonWrapper, LabelInput, Layout, TitleBox } from "../styles/commonSty
 import Input from "../component/Input";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import AlertModal from "../component/AlertModal";
 const Login = () => {
     const { showModal } = usePromiseModal();
     const [id, setId] = useState("");
@@ -22,9 +23,23 @@ const Login = () => {
             password
         });
         if (id === "" || password === "") {
-            console.log(id, password);
+            showModal(React.createElement(AlertModal, { content: "\uC544\uC774\uB514 \uB610\uB294 \uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC57C\uD569\uB2C8\uB2E4", onClose: () => {
+                } }));
+            return console.log("빈값", id, password);
         }
-        showModal(React.createElement(React.Fragment, null, "\uB85C\uADF8\uC778 \uD569\uB2C8\uB2E4!"));
+        try {
+            if (id === "asdf" && password === "asdf") {
+                showModal(React.createElement(React.Fragment, null, "\uB85C\uADF8\uC778 \uD569\uB2C8\uB2E4!"));
+            }
+            else {
+                throw new Error("서버에러!");
+            }
+        }
+        catch (e) {
+            showModal(React.createElement(React.Fragment, null, e.message));
+        }
+        finally {
+        }
     };
     return (React.createElement(Layout, null,
         React.createElement(TitleBox, null,
@@ -33,10 +48,10 @@ const Login = () => {
         React.createElement(LoginForm, { onSubmit: onSubmit },
             React.createElement(LabelInput, null,
                 React.createElement("label", { htmlFor: "id" }, "\uC544\uC774\uB514(\uC601\uC5B4 10\uC790 \uC774\uD558)"),
-                React.createElement(Input, { name: "id", minLength: 4, maxLength: 10, type: "text", onChange: onChangeId, placeHolder: "\uC544\uC774\uB514\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694." })),
+                React.createElement(Input, { name: "id", type: "text", onChange: onChangeId, placeholder: "\uC544\uC774\uB514\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694." })),
             React.createElement(LabelInput, null,
                 React.createElement("label", { htmlFor: "password" }, "\uBE44\uBC00\uBC88\uD638"),
-                React.createElement(Input, { name: "password", minLength: 4, type: "password", onChange: onChangePassword, placeHolder: "\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694." })),
+                React.createElement(Input, { name: "password", type: "password", onChange: onChangePassword, placeholder: "\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694." })),
             React.createElement(ButtonWrapper, null,
                 React.createElement(Button, { type: "submit" }, "\uB85C\uADF8\uC778"))),
         React.createElement(LinkWrapper, null,
@@ -52,6 +67,7 @@ const LoginForm = styled.form `
 const LinkWrapper = styled.div `
   margin-top: 2rem;
   text-align: center;
+
   a {
     font-size: var(--anchor-font-size);
     color: var(--anchor-font-size);

@@ -46,6 +46,7 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
     setTimeout(() => setIsModalOpen(false), 300);
   };
 
+  // 어두운 영역 누르면 close되는 함수
   const cancelModal: React.MouseEventHandler<HTMLDivElement> = (event) => {
     if (event.currentTarget !== event.target) return;
     closeModal();
