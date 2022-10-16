@@ -2,8 +2,19 @@ import React from "react";
 import { Layout, TitleBox } from "../styles/commonStyle";
 import styled from "styled-components";
 import Button from "../component/Button";
+import { usePromiseModal } from "../dialog/usePromiseModal";
+import ShareModal from "../component/ShareModal";
 
 const Home = () => {
+  const { showModal } = usePromiseModal();
+
+  const showShareModal = () => {
+    showModal(<ShareModal
+      onClose={() => {
+        console.log('hello');
+      }}
+    />);
+  };
 
   return (
     <HomeLayout>
@@ -19,7 +30,7 @@ const Home = () => {
       <Bottom>
         <TwoButtonWrapper>
           <Button className="toMe">나에게 쓰기</Button>
-          <Button className="share">공유하기</Button>
+          <Button className="share" onClick={showShareModal}>공유하기</Button>
         </TwoButtonWrapper>
       </Bottom>
     </HomeLayout>

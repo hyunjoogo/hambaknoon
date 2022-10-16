@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Test from "./component/Test";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
@@ -19,7 +19,6 @@ const AppRouter = () => {
                     React.createElement(Route, { path: "/signup", element: React.createElement(SignUp, null) }),
                     React.createElement(Route, { path: "/", element: React.createElement(Test, null) }),
                     React.createElement(Route, { path: "/member", element: React.createElement(Member, null) },
-                        React.createElement(Route, { path: ":memberId", element: React.createElement(MemberInfo, null) })),
-                    React.createElement(Route, { path: "*", element: React.createElement(Navigate, { replace: true, to: "/login" }) }))))));
+                        React.createElement(Route, { path: ":memberId", element: React.createElement(MemberInfo, null) })))))));
 };
 export default AppRouter;

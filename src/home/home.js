@@ -2,7 +2,15 @@ import React from "react";
 import { Layout, TitleBox } from "../styles/commonStyle";
 import styled from "styled-components";
 import Button from "../component/Button";
+import { usePromiseModal } from "../dialog/usePromiseModal";
+import ShareModal from "../component/ShareModal";
 const Home = () => {
+    const { showModal } = usePromiseModal();
+    const showShareModal = () => {
+        showModal(React.createElement(ShareModal, { onClose: () => {
+                console.log('hello');
+            } }));
+    };
     return (React.createElement(HomeLayout, null,
         React.createElement(HomeTitleBox, null,
             React.createElement("h1", { className: "title" },
@@ -13,7 +21,7 @@ const Home = () => {
         React.createElement(Bottom, null,
             React.createElement(TwoButtonWrapper, null,
                 React.createElement(Button, { className: "toMe" }, "\uB098\uC5D0\uAC8C \uC4F0\uAE30"),
-                React.createElement(Button, { className: "share" }, "\uACF5\uC720\uD558\uAE30")))));
+                React.createElement(Button, { className: "share", onClick: showShareModal }, "\uACF5\uC720\uD558\uAE30")))));
 };
 export default Home;
 const HomeLayout = styled(Layout) `
