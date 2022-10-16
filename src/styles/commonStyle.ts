@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const Layout = styled.section`
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 `;
 
 // 버튼 감싸는 용도
@@ -26,8 +27,7 @@ export const LabelInput = styled.div`
 export const TitleBox = styled.section`
   height: 30%;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  padding-top: 20%;
 
   .title {
     font-size: var(--main-title-font-size);
@@ -41,3 +41,4 @@ export const TitleBox = styled.section`
     text-align: center;
   }
 `;
+

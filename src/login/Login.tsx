@@ -59,10 +59,10 @@ const Login = () => {
 
   return (
     <Layout>
-      <TitleBox>
+      <LoginTitleBox>
         <h1 className="title">함박눈</h1>
         <h2 className="subTitle">눈이 오는 날에, 우리 만날까요?</h2>
-      </TitleBox>
+      </LoginTitleBox>
       <LoginForm onSubmit={onSubmit}>
         <LabelInput>
           <label htmlFor="id">아이디(영어 10자 이하)</label>
@@ -97,6 +97,15 @@ const Login = () => {
 };
 
 export default Login;
+
+const LoginTitleBox = styled(TitleBox)`
+  flex-direction: column;
+
+  & > :nth-child(1) {
+    order: 1
+  }
+
+`;
 
 const LoginForm = styled.form`
   display: grid;

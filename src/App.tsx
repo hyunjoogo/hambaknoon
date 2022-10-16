@@ -1,10 +1,16 @@
-import React from 'react';
-import {createGlobalStyle} from 'styled-components';
+import React, { useEffect } from "react";
+import { createGlobalStyle } from "styled-components";
 
 import AppRouter from "./AppRouter";
-import {RecoilRoot} from "recoil";
+import { RecoilRoot } from "recoil";
 
-function App() {
+function App () {
+
+  useEffect(() => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }, []);
+
   return (
     <RecoilRoot>
       <GlobalStyle/>
@@ -57,7 +63,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     line-height: 1;
-    height: calc(var(--vh, 1vh) * 100);
+    //height: calc(var(--vh, 1vh) * 100);
     //height: 100%;
   }
 
@@ -79,7 +85,7 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
+
   button {
     border: none;
     cursor: pointer;

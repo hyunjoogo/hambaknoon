@@ -42,7 +42,7 @@ const Login = () => {
         }
     };
     return (React.createElement(Layout, null,
-        React.createElement(TitleBox, null,
+        React.createElement(LoginTitleBox, null,
             React.createElement("h1", { className: "title" }, "\uD568\uBC15\uB208"),
             React.createElement("h2", { className: "subTitle" }, "\uB208\uC774 \uC624\uB294 \uB0A0\uC5D0, \uC6B0\uB9AC \uB9CC\uB0A0\uAE4C\uC694?")),
         React.createElement(LoginForm, { onSubmit: onSubmit },
@@ -58,6 +58,14 @@ const Login = () => {
             React.createElement(Link, { to: "/signup" }, "\uD568\uBC15\uB208 \uB2F4\uBCBC\uB77D \uB9CC\uB4E4\uAE30"))));
 };
 export default Login;
+const LoginTitleBox = styled(TitleBox) `
+  flex-direction: column;
+
+  & > :nth-child(1) {
+    order: 1
+  }
+
+`;
 const LoginForm = styled.form `
   display: grid;
   grid-template-columns: repeat(1);

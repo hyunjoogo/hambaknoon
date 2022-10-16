@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const Layout = styled.section `
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 `;
 export const ButtonWrapper = styled.div `
   margin-top: 1rem;
@@ -18,8 +19,7 @@ export const LabelInput = styled.div `
 export const TitleBox = styled.section `
   height: 30%;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  padding-top: 20%;
 
   .title {
     font-size: var(--main-title-font-size);

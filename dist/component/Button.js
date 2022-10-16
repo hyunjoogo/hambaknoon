@@ -15,6 +15,7 @@ const ButtonStyled = styled.button `
   justify-content: center;
   align-items: center;
   font-size: var(--button-font-size);
+  font-weight: 700;
 
   :disabled {
     background-color: var(--button-disabled-bg-color);

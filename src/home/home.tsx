@@ -1,16 +1,21 @@
 import React from "react";
-import { Layout } from "../styles/commonStyle";
+import { Layout, TitleBox } from "../styles/commonStyle";
 import styled from "styled-components";
 import Button from "../component/Button";
 
 const Home = () => {
+
   return (
     <HomeLayout>
-      <Top>
-        [유저네임]님
-        12월엔 눈이 올까요?
-        ❄️ 눈이 오면 열려요
-      </Top>
+      <HomeTitleBox>
+        <h1 className="title">
+          [유저네임]님, <br/>
+          12월엔 눈이 올까요?
+        </h1>
+        <h2 className="subTitle">
+          ❄️ 눈이 오면 열려요
+        </h2>
+      </HomeTitleBox>
       <Bottom>
         <TwoButtonWrapper>
           <Button className="toMe">나에게 쓰기</Button>
@@ -27,22 +32,37 @@ const HomeLayout = styled(Layout)`
 
 `;
 
-const Top = styled.div`
-  padding: 0 1.5rem;
-  height: 50vh;
+const HomeTitleBox = styled(TitleBox)`
+  padding: 20% 1.5rem;
+  height: 50%;
+  flex-direction: column;
+
+  .title {
+    line-height: 2rem;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  .subTitle {
+    font-weight: 700;
+    text-align: left;
+  }
 `;
 
 const Bottom = styled.div`
   padding: 0 1.5rem;
-  height: 50vh;
+  height: 50%;
   background-color: var(--main-color-lightgray);
-`
+  display: flex;
+  align-items: flex-end;
+`;
 
 const TwoButtonWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 0.5rem;
+  margin-bottom: 2.5rem;
 
   .toMe {
     color: var(--button-secondary-font-color);

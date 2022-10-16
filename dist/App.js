@@ -1,8 +1,12 @@
-import React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import React, { useEffect } from "react";
+import { createGlobalStyle } from "styled-components";
 import AppRouter from "./AppRouter";
 import { RecoilRoot } from "recoil";
 function App() {
+    useEffect(() => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }, []);
     return (React.createElement(RecoilRoot, null,
         React.createElement(GlobalStyle, null),
         React.createElement(AppRouter, null)));
@@ -50,7 +54,8 @@ export const GlobalStyle = createGlobalStyle `
 
   body {
     line-height: 1;
-    height: calc(var(--vh, 1vh) * 100);
+    //height: calc(var(--vh, 1vh) * 100);
+    //height: 100%;
   }
 
   ol, ul {
@@ -71,7 +76,7 @@ export const GlobalStyle = createGlobalStyle `
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
+
   button {
     border: none;
     cursor: pointer;

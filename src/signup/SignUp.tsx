@@ -79,10 +79,10 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <TitleBox>
+      <SignUpTitleBox>
         <h1 className="title">회원가입</h1>
         <h2 className="subTitle">담벼락 만들기</h2>
-      </TitleBox>
+      </SignUpTitleBox>
       <SignUpForm onSubmit={onSubmit}>
         <LabelInput>
           <label htmlFor="id">아이디(영어 10자 이하)</label>
@@ -133,7 +133,13 @@ const SignUp = () => {
 export default SignUp;
 
 
+const SignUpTitleBox = styled(TitleBox)`
+  flex-direction: column;
 
+  & > :nth-child(1) {
+    order: 1
+  }
+`;
 
 const SignUpForm = styled.form`
   display: grid;

@@ -59,7 +59,7 @@ const SignUp = () => {
         showModal(React.createElement(React.Fragment, null, "\uC131\uACF5\uD588\uC2B5\uB2C8\uB2E4~"));
     };
     return (React.createElement(Layout, null,
-        React.createElement(TitleBox, null,
+        React.createElement(SignUpTitleBox, null,
             React.createElement("h1", { className: "title" }, "\uD68C\uC6D0\uAC00\uC785"),
             React.createElement("h2", { className: "subTitle" }, "\uB2F4\uBCBC\uB77D \uB9CC\uB4E4\uAE30")),
         React.createElement(SignUpForm, { onSubmit: onSubmit },
@@ -80,6 +80,13 @@ const SignUp = () => {
                 React.createElement(Button, { type: "submit", disabled: !(isId && isPassword && isPasswordConfirm) }, "\uD68C\uC6D0\uAC00\uC785")))));
 };
 export default SignUp;
+const SignUpTitleBox = styled(TitleBox) `
+  flex-direction: column;
+
+  & > :nth-child(1) {
+    order: 1
+  }
+`;
 const SignUpForm = styled.form `
   display: grid;
   grid-template-columns: repeat(1, 3fr);
