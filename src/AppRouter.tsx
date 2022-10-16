@@ -14,7 +14,7 @@ const AppRouter = () => {
   // TODO Lazy Loading으로 바꿀 것
   return (
     <>
-      <BrowserRouter basename="/hambaknoon"/>
+      <BrowserRouter>
         <ModalProvider>
           {/*<Navigation/>*/}
           <Routes>
