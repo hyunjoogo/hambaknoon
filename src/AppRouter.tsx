@@ -5,9 +5,9 @@ import Test from "./component/Test";
 import Member from "./member/Member";
 import MemberInfo from "./member/MemberInfo";
 import SignUp from "./signup/SignUp";
-import ModalTest from "./modal-test/ModalTest";
 import ModalProvider from "./dialog/ModalProvider";
 import Login from "./login/Login";
+import Home from "./home/home";
 
 const AppRouter = () => {
   // TODO Lazy Loading으로 바꿀 것
@@ -17,7 +17,7 @@ const AppRouter = () => {
         <ModalProvider>
           {/*<Navigation/>*/}
           <Routes>
-            <Route path="/main" element={<ModalTest/>}/>
+            <Route path="/main" element={<Home/>}/>
             {/*<Route path="/modal" element={<ModalTest/>}/>*/}
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>

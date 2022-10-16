@@ -18,24 +18,32 @@
     --layout-padding-side: 1.25em;
 
     /* Color */
-    --main-color-black: #202020;
+    --main-color-primary: #202020;
+    --main-color-secondary : #DBD9CA;
+    --main-color-warning: #E03131;
     --main-color-gray: #9E9E9E;
+    --main-color-lightgray: #D9D9D9;
+    --main-color-whitesmoke: #F0F0F0;
 
     /* Component Setting */
     /* Rule */
     /* 해당 컴포넌트의 색상 및 폰트 관련한 것을 아래에 적는다. */
 
-    /* button */
+    /* button basic */
     --button-font-color: #FFF;
     --button-font-size: var(--main-basic-font-size);
-    --button-bg-color: var(--main-color-black);
-    --button-disabled-bg-color: #DBD9CA;
+    --button-bg-color: var(--main-color-primary);
+    --button-disabled-bg-color: var(--main-color-secondary);
+
+    /* button secondary */
+    --button-secondary-bg-color: var(--main-color-secondary);
+    --button-secondary-font-color: var(--main-color-primary);
 
     /*  text input */
     --input-border-basic-color: #363A3E;
     --input-placeholder-color: #ADB5BD;
-    --input-focus-color: var(--main-color-black);
-    --input-error-color: #E03131;
+    --input-focus-color: var(--main-color-primary);
+    --input-error-color: var(--main-color-warning);
     --input-alert-font-size: 0.75rem;
 
     /* anchor */

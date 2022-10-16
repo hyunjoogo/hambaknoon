@@ -58,6 +58,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     line-height: 1;
     height: calc(var(--vh, 1vh) * 100);
+    //height: 100%;
   }
 
   ol, ul {
